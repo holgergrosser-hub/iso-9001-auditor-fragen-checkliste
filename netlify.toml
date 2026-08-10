@@ -5,6 +5,25 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# --- Weiterleitungen (Reihenfolge ist wichtig) ---
+
+# 1) Alte Subdomain -> neue URL auf der Hauptdomain (dauerhafter 301)
+#    Gilt NUR für Aufrufe über audit-checkliste.qm-guru.de.
+#    Aufrufe über iso-9001-auditor-fragen-checkliste.netlify.app
+#    (= der Cloudflare-Worker) werden ganz normal ausgeliefert.
+[[redirects]]
+  from = "https://audit-checkliste.qm-guru.de/*"
+  to = "https://qm-guru.de/audit-checkliste/:splat"
+  status = 301
+  force = true
+
+# 2) Damit die Seite auch unter dem Pfad /audit-checkliste/ funktioniert
+#    (Bilder & Favicon sind in der index.html mit /audit-checkliste/... verlinkt)
+[[redirects]]
+  from = "/audit-checkliste/*"
+  to = "/:splat"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

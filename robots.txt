@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://audit-checkliste.qm-guru.de/sitemap.xml
+Sitemap: https://qm-guru.de/audit-checkliste/sitemap.xml
